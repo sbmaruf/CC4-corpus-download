@@ -9,8 +9,8 @@ usage: Few-Shot Contextual Cross-lingual Adaptation. [-h]
 optional arguments:
   -h, --help            show this help message and exit
   --lang [LANG [LANG ...]]
-                        List of language that you want to extract. Value-type:
-                        list(lang code)
+                        List of language that you want to extract. Add "all"
+                        to download full corpush. Value-type: list(lang code)
   --force-download      Force download if the data exists in the folder.
                         Value-type: (str)
   --folder FOLDER       Folder where will be data downloaded. Value-type:

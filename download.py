@@ -6,7 +6,7 @@ parser = argparse.ArgumentParser("Few-Shot Contextual Cross-lingual Adaptation."
 parser.add_argument("--lang",
                      nargs='*',
                      default=["en", "sw"], 
-                     help="List of language that you want to extract. Value-type: list(lang code)")
+                     help="List of language that you want to extract. Add \"all\" to download full corpush. Value-type: list(lang code)")
 parser.add_argument("--force-download",
                     action="store_true",
                     help="Force download if the data exists in the folder. Value-type: (str)")
