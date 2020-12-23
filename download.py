@@ -2,7 +2,7 @@ import os
 import argparse
 import subprocess
 
-parser = argparse.ArgumentParser("Few-Shot Contextual Cross-lingual Adaptation.")
+parser = argparse.ArgumentParser("Monolingual text stream download.")
 parser.add_argument("--lang",
                      nargs='*',
                      default=["en", "sw"], 
