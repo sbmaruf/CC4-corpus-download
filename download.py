@@ -5,11 +5,17 @@ import subprocess
 parser = argparse.ArgumentParser("Monolingual text stream download.")
 parser.add_argument("--lang",
                      nargs='*',
-                     default=["en", "sw"], 
+                     default=["bn", "sw"], 
                      help="List of language that you want to extract. Add \"all\" to download full corpush. Value-type: list(lang code)")
 parser.add_argument("--force-download",
                     action="store_true",
                     help="Force download if the data exists in the folder. Value-type: (str)")
+parser.add_argument("--extract",
+                    action="store_true",
+                    help="Force download if the data exists in the folder. Value-type: (str)")
+parser.add_argument("--delete-compressed",
+                    action="store_true",
+                    help="Delete the compressed source files. Value-type: (str)")
 parser.add_argument("--folder",
                     default="data", 
                     type=str, 
@@ -40,5 +46,13 @@ for lang, desc in content:
         if args.force_download or not os.path.exists(os.path.join(args.folder, "{}.txt.xz".format(lang))):
             print("Downloading ... : {} {}".format(lang, desc))
             cmd = "wget " + args.source_url.format(lang) + "  -P {}".format(args.folder)
+            print("Running cmd: {}".format(cmd))
             subprocess.check_output(cmd, shell=True)
-        
+        if args.extract and os.path.exists(os.path.join(args.folder, "{}.txt.xz".format(lang))):
+            cmd = "xz -d {}".format(os.path.join(args.folder, "{}.txt.xz".format(lang)))
+            print("Running cmd: {}".format(cmd))
+            subprocess.check_output(cmd, shell=True)
+        if args.delete_compressed and os.path.exists(os.path.join(args.folder, "{}.txt.xz".format(lang))):
+            cmd = "rm {}".format(os.path.join(args.folder, "{}.txt.xz".format(lang)))
+            print("Running cmd: {}".format(cmd))
+            subprocess.check_output(cmd, shell=True)
