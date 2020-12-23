@@ -26,6 +26,7 @@ args = parser.parse_args()
 
 
 content = []
+flag = "all" in args.lang
 with open(args.corpus_dict) as filePtr:
     for line in filePtr:
         line=line.strip().split(" ", 1)
@@ -35,7 +36,7 @@ with open(args.corpus_dict) as filePtr:
 os.makedirs(args.folder, exist_ok = True)
 
 for lang, desc in content:
-    if lang in args.lang or lang.split("_") in args.lang:
+    if lang in args.lang or lang.split("_") in args.lang or flag:
         if args.force_download or not os.path.exists(os.path.join(args.folder, "{}.txt.xz".format(lang))):
             print("Downloading ... : {} {}".format(lang, desc))
             cmd = "wget " + args.source_url.format(lang) + "  -P {}".format(args.folder)
