@@ -1,4 +1,5 @@
-```usage: Few-Shot Contextual Cross-lingual Adaptation. [-h]
+```
+usage: Few-Shot Contextual Cross-lingual Adaptation. [-h]
                                                      [--lang [LANG [LANG ...]]]
                                                      [--force-download]
                                                      [--folder FOLDER]
